@@ -10,8 +10,10 @@ extern "C" {
 
 #include <cmath>
 
+#define pi 3.14159265358979323846   // Define pi for comparison
+
 TEST_CASE("taylor_sine") {
-  const double pi = M_PI;
+  // const double pi = M_PI; removed as it is already defined
   const double precision = 0.0001;
   std::vector<std::pair<double, int>> scenarios = {
     {pi, 8},
@@ -28,7 +30,7 @@ TEST_CASE("taylor_sine") {
 TEST_CASE("initialize", "[stack]") {
   stack s;
   initialize(&s);
-  REQUIRE(s.head == NULL);
+  REQUIRE(s.head == nullptr); // changed from NULL to nullptr
 }
 
 TEST_CASE("empty", "[stack]") {
@@ -58,11 +60,11 @@ TEST_CASE("push", "[stack]") {
   s.head = NULL;
   int x = 1;
   push(x, &s);
-  REQUIRE(s.head != NULL);
+  REQUIRE(s.head != nullptr); // changed from NULL to nullptr
   REQUIRE(s.head->data == x);
   int y = 2;
   push(y, &s);
-  REQUIRE(s.head->next != NULL);
+  REQUIRE(s.head->next != nullptr); // changed from NULL to nullptr
   REQUIRE(s.head->data == y);
 }
 
@@ -76,7 +78,7 @@ TEST_CASE("pop", "[stack]") {
   s.head = n;
   int y = pop(&s);
   REQUIRE(x == y);
-  REQUIRE(s.head == NULL);
+  REQUIRE(s.head == nullptr); // changed from NULL to nullptr
 }
 
 TEST_CASE("stack", "[stack]") {
